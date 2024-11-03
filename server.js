@@ -206,7 +206,6 @@ app.get('/delete-product/:user_id/:id', async (req, res)=>{
     const user_id = req.params.user_id;
     
     let admin = await adminModel.findOne({ _id : user_id});
-    console.log(admin)
     let deletedProduct = await productModel.findOne({ _id : admin.products[product]});
 
     await productModel.findOneAndDelete( { _id : admin.products[product]});
