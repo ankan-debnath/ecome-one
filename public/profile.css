@@ -1,0 +1,220 @@
+body{
+    background-color: #e3e6f37a;
+}
+.profile-menu{
+    /* display: none; */
+    background-color: aliceblue;
+    width: 120px;
+    padding: 5px 10px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transition: 0.2s step-end;
+    position: absolute;
+    right: 39.5%;
+}
+.close{
+    display: none;
+}
+#navbar li button:hover::after {
+    content: "";
+    height: 2px;
+    width: 50%;
+    bottom: -4px;
+    background:#088178 ;
+    left: 0px;
+}
+#navbar li button{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.4s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-menu a   {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 0;
+    color: black;
+    margin: 8px 0;
+}
+.profile-menu a:hover{
+    text-decoration: underline;
+}
+
+#profile{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-left: 5%;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    gap: 20px;
+    background-color:#fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    /* width: 100%; */
+    min-height: 100vh;
+    padding: 40px;
+}
+#profile .details{
+    margin-left: 0px;
+    width: 70%;
+}
+
+.tab-btn{
+    font-size: 15px;
+    font-weight: 600;
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.162);
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.tab-btn:hover{
+    color: #088178;
+    background-color: aliceblue;
+}
+.btn-active,
+.btn-active:hover{
+    color:white;
+    background-color: #088178;
+}
+/* .details{
+    overflow:hidden;
+} */
+.detail{
+    display: none;
+}
+.open{
+    display: block;
+}
+.detail {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.detail h4 {
+    font-size: 1.5em;
+    color: #333;
+    border-bottom: 2px solid #088178;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.add {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #00000029; /* Dashed outline around each address */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fdfff80c; /* Light background for each address block */
+}
+
+.add h5 {
+    font-size: 1.2em;
+    color: #088178;
+    margin-bottom: 8px;
+}
+
+.add p {
+    font-size: 1em;
+    color: #555;
+    margin: 4px 0;
+}
+
+.add p:first-of-type {
+    font-weight: bold;
+}
+.new-address-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #088178;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.new-address-btn:hover {
+    background-color: #0b5f59;
+}
+
+.address-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #088178;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #088178;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.close{
+    display: none;
+}
+
+.submit-btn:hover {
+    background-color: #0b5f59;
+}

@@ -1,0 +1,14 @@
+#product1 .des span{
+    font-size: 200px;
+}
+.fa-star, .fa-star-half-alt{
+    color: rgb(237, 201, 0);
+}
+.star{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.price{
+    margin-top: auto    ;
+    height: 100%;
+}

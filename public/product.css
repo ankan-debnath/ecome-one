@@ -1,0 +1,14 @@
+.single-pro-details h4{
+    font-size: 30px;
+}
+.single-pro-details h2{
+    font-size: 30px;
+}
+.single-pro-image img{
+    border: 1px solid #aed73c;
+    border-radius: 5px;
+    z-index: 999;
+    max-height: 500px;
+    width: 100%;
+    object-fit: contain;
+}

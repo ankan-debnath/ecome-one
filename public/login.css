@@ -1,0 +1,155 @@
+/* Reset default browser styling */
+* {
+    font-family: 'League Spartan' ;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.section-p1{
+    padding: 40px 80px;
+}
+.section-m1{
+    margin: 40px 0;
+}
+
+#container {
+    background-color: #E3E6F3;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.auth-container {
+    background: white;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+
+}
+
+.tab-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.tab {
+    width: 50%;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.tab.active {
+    background-color: #088178;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #088178;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #106862;
+}
+
+.forgot-password {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.forgot-password a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.social-login a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    width: 45%;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.social-login a.facebook {
+    background-color: #3b5998;
+}
+
+.social-login a.google {
+    background-color: #dd4b39;
+}
+
+.social-login a:hover {
+    opacity: 0.9;
+}
+
+/* Hide signup form initially */
+.signup-form {
+    display: none;
+}

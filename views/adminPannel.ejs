@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Orders & Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200&icon_names=star&&shopping_cart" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="adminPannel.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+    <%- include('./partials/header') %>
+
+    <div class="container">
+
+        <!-- Orders Section -->
+        <div class="section orders-section">
+            <h1>Received Orders</h1>
+            <div class="orders">
+                <!-- Sample Order Card -->
+                <div class="order-card">
+                    <div class="order-header">
+                        <h4>Order #12345</h4>
+                        <span class="order-status status-pending">Pending</span>
+                    </div>
+                    <div class="order-details">
+                        <p><strong>Customer:</strong> John Doe</p>
+                        <p><strong>Products:</strong> Product A, Product B</p>
+                        <p><strong>Total Price:</strong> $120.00</p>
+                    </div>
+                    <div class="order-actions">
+                        <select>
+                            <option value="pending">Pending</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                        </select>
+                        <button>Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section products-section">
+            <h2>Product Listings</h2>
+            <div id="listings">
+                <% if (locals.listing.length) { %>
+                    <% for(let i = 0; i < listing.length; i++) {%>
+                        <% let element = listing[i]; %>
+                        <div class="products" id="<%= i %>">
+                            <!-- Sample Product Card -->
+                            <div class="product-card">
+                                <img src="/img/uploads/<%= element.images[0] %>" alt="Product Image">
+                                <h3><%= element.brand %></h3>
+                                <span><%= element.name %></span>
+                                <p><strong>Price:</strong> ₹<%= element.price %></p>
+                                <p><strong>Stock:</strong> 20</p>
+                                <div class="product-actions">
+                                    <button id="<%= element._id  %>" >Edit</button>
+                                    <button id="<%= element._id %>" onclick="deleteProduct('<%= i %>', '<%= admin._id %>')">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+
+            <button class="add-product-btn" onclick="showAddProductForm()">Add New Product</button>
+
+            <div class="form-container" style="display: none;">
+                <h2>Create New Product</h2>
+                <form id="createProductForm" action="/add-product" method="POST" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="brand">Brand</label>
+                            <input type="text" id="brand" name="brand" placeholder="Enter product brand" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Product Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter product name" required>
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price">Price (₹)</label>
+                            <input type="number" id="price" name="price" placeholder="Enter product price" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating (out of 5)</label>
+                            <input type="number" id="rating" name="rating" placeholder="Enter product rating" min="1" max="5" step="0.1" required>
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Enter product description" required></textarea>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="images">Upload Product Images</label>
+                        <div class="image-upload-grid">
+                            <input type="file" id="image1" name="image" accept="image/*" onchange="previewImage(event, 'preview1')" required>
+                            <input type="file" id="image2" name="image" accept="image/*" onchange="previewImage(event, 'preview2')" >
+                            <input type="file" id="image3" name="image" accept="image/*" onchange="previewImage(event, 'preview3')" >
+                            <input type="file" id="image4" name="image" accept="image/*" onchange="previewImage(event, 'preview4')" >
+                            <input type="file" id="image5" name="image" accept="image/*" onchange="previewImage(event, 'preview5')" >
+                        </div>
+        
+                        <div class="image-preview" id="imagePreviewContainer">
+                            <img id="preview1" src="" alt="" style="display:none;">
+                            <img id="preview2" src="" alt="" style="display:none;">
+                            <img id="preview3" src="" alt="" style="display:none;">
+                            <img id="preview4" src="" alt="" style="display:none;">
+                            <img id="preview5" src="" alt="" style="display:none;">
+                        </div>
+                    </div>
+        
+                    <div class="form-group">
+                        <button type="submit">Create Product</button>
+                        <button type="button" onclick="hideAddProductForm()">Cancel</button>
+                    </div>
+                </form>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function deleteProduct(btn){
+            const product = document.getElementById(btn);
+            console.log(product.id);
+            product.style.display = 'none';
+            const user = document.querySelector('.user');
+            console.log(user.id);
+            window.location.href = `/delete-product/${user.id}/${product.id}`;
+        }
+    </script>
+
+</body>
+<script src="/index.js" type="text/javascript"></script>
+<script src="/create-product.js" type="text/javascript  "></script>
+</html>

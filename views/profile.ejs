@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200&icon_names=star&&shopping_cart" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/profile.css">
+</head>
+<body>
+    <%- include('./partials/header') %>
+    
+    <section id="profile" class="section-p1 section-m1">
+        <div class="options">
+            <button class="tab-btn <%= activeSection == 'personal-info' ? 'btn-active' : ''%>">Personal Information</button>
+            <button class="tab-btn <%= activeSection == 'my-addresses' ? 'btn-active' : ''%>" >My Addresses</button>
+            <button class="tab-btn <%= activeSection == 'my-orders' ? 'btn-active' : ''%>" >My Orders</button>
+            <button class="tab-btn <%= activeSection == 'wishlist' ? 'btn-active' : ''%>" >Wishlist</button>
+            <button class="tab-btn <%= activeSection == 'help-support' ? 'btn-active' : ''%>" >Help & Support</button>
+        </div>
+        
+        <div class="details">
+            <div class="detail <%= activeSection == 'personal-info' ? 'open' : ''%>">
+                <h4>Personal Information</h4>
+                <div class="p">
+                    <span><strong>Name</strong></span>
+                    <span>Ankan Debnath</span>
+                </div>
+                <div class="p">
+                    <span><strong>Mobile Number</strong></span>
+                    <span>8158847571</span>
+                </div>
+                <div class="p">
+                    <span><strong>Email Address</strong></span>
+                    <span>ankan.s.debnath@gmail.com</span>
+                </div>
+            </div>
+            <div class="detail <%= activeSection == 'my-addresses' ? 'open' : ''%>">
+                <h4>My Addresses</h4>
+                <button class="new-address-btn">Add New Address</button>
+
+                <form class="address-form close" action="/add-address" method="post">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="name" placeholder="Enter your full name" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="text" id="mobileNumber" name="mobile" placeholder="Enter your mobile number" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="addressLine1">Address Line 1</label>
+                        <input type="text" id="addressLine1" name="add1" placeholder="Enter your street address" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="addressLine2">Address Line 2</label>
+                        <input type="text" id="addressLine2" name="add2" placeholder="Enter your apartment, suite, etc." optional>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="district">District</label>
+                        <input type="text" id="district" name="district" placeholder="Enter your district" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="postalCode">PIN Code</label>
+                        <input type="text" id="postalCode" name="pin" placeholder="Enter your PIN code" required>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="addressType">Address Type</label>
+                        <select id="addressType" name="type" required>
+                            <option value="home">Home</option>
+                            <option value="office">Office</option>
+                        </select>
+                    </div>
+                
+                    <button type="submit" class="submit-btn">Save Address</button>
+                </form>
+                
+                <% if (user.address.length) { %>
+                   <% for( let i = 0; i < user.address.length; i++ ) { %>
+                        <% let add = user.address[i] %>
+                        <div class="add" id="<%= i %>">
+                            <h5><%= add.type %></h5>
+                            <p><%= add.name %></p>
+                            <p><%= add.mobile %></p>
+                            <p><%= add.add1 %></p>
+                            <p><%= add.add2 %></p>
+                            <p><%= add.district %></p>
+                            <p>PIN : <%= add.pin %></p>
+                        </div>
+                   <% } %>
+                <% } else { %>
+                    <p>You have no saved addresses</p>
+                <% } %>
+            </div>
+            <div class="detail <%= activeSection == 'my-orders' ? 'open' : ''%>">
+                <h4>Orders</h4>
+                <div class="o">
+                    <p>brand</p>
+                    <p>T-Shirt</p>
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="detail <%= activeSection == 'wishlist' ? 'open' : ''%>">
+                <h4>My Wishlist</h4>
+            </div>
+            <div class="detail <%= activeSection == 'help-support' ? 'open' : ''%>">
+                <h4>Help & Support</h4>
+            </div>
+        </div>
+
+    </section>
+</body>
+<script src="/index.js" type="text/javascript"></script>
+<script src="/profile.js" type="text/javascript"></script>
+</html>

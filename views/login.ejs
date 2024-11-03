@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200&icon_names=star&&shopping_cart" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/login.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/profile.css">
+    <title>Login and Signup</title>
+</head>
+<body>
+
+    <%- include('./partials/header') %>
+
+    <section id="container">
+        <div class="auth-container" class="section-p1">
+            <div class="tab-group">
+                <div class="tab active" id="login-tab">Login</div>
+                <div class="tab" id="signup-tab">Sign Up</div>
+            </div>
+            
+            <% if (locals.message) { %>
+                <p style="color: <%= message.color %> ;"><%= message.text %></p>
+            <% } %>
+    
+            <!-- Login Form -->
+            <form class="login-form" method="POST" action="/login">
+                <h2>Login</h2>
+                <div class="form-group"> 
+                    <label for="login-email">Email</label>
+                    <input name="email" type="email" id="login-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input name="password" type="password" id="login-password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+    
+            <form class="signup-form" method="post" action="/signup">
+                <h2>Sign Up</h2>
+                <div class="form-group">
+                    <label for="signup-name">Name</label>
+                    <input name="name" type="text" id="signup-name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input name="email" type="email" id="signup-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input name="password" type="password" id="signup-password" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+    
+            <div class="social-login">
+                <a href="#" disabled class="facebook">Facebook</a>
+                <a href="#" class="google">Google</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript to switch between Login and Signup forms
+        const loginTab = document.getElementById('login-tab');
+        const signupTab = document.getElementById('signup-tab');
+        const loginForm = document.querySelector('.login-form');
+        const signupForm = document.querySelector('.signup-form');
+
+        loginTab.addEventListener('click', function() {
+            loginTab.classList.add('active');
+            signupTab.classList.remove('active');
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+        });
+
+        signupTab.addEventListener('click', function() {
+            signupTab.classList.add('active');
+            loginTab.classList.remove('active');
+            signupForm.style.display = 'block';
+            loginForm.style.display = 'none';
+        });
+    </script>
+
+</body>
+<script src="profile.js" type="text/javascript"></script>
+<script src="index.js" type="text/javascript"></script>
+</html>
